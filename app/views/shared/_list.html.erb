@@ -1,0 +1,30 @@
+<!-- ユーザープロフィール -->
+
+
+<div class="user info">
+	<h2>User info</h2>
+	<div class="image">
+		<%= attachment_image_tag user, :profile_image,:fill, 60, 60,fallback: "no_image.jpg" %>
+	</div>
+	<div class="user_name">
+		<h5>Name</h5>
+		<%= user.name %>
+	</div>
+	<div>
+		<h5>introduction</h5>
+		<%= user.introduction %>
+	</div>
+	<%= link_to '編集画面へ',edit_user_path(current_user)%>
+</div>
+
+<!-- New book -->
+<div class="new book">
+ <%= form_for(book) do |f| %>
+ 	<h2>New book</h2>
+ 	<h5>title</h5>
+	<p><%= f.text_field :title%></p>
+	<h5>Opinion</h5>
+	<p><%= f.text_area :body%></p>
+	<p><%= f.submit"create book" %></p>
+ <% end %>
+</div>

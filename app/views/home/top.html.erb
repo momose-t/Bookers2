@@ -1,0 +1,18 @@
+<!-- <header>
+	<p>Bookers</p>
+	<li>Home</li>
+	<li>About</li>
+	<li>sign up</li>
+	<li>login</li>
+</header> -->
+<!-- Signed out successfully. -->
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<p>welcome to Bookers !!
+In Bookers,you can share and exchange your opinions , inpressions , and emotionsabout varioius books!</p>
+
+
+<%= link_to 'Login',new_user_session_path %>
+<%= link_to 'Sign in',new_user_registration_path %>

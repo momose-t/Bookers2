@@ -1,0 +1,38 @@
+<!-- エラー -->
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<!-- エラーメッセージ -->
+<% if @book.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- user infoとcreate opinion -->
+<%= render 'shared/list', user: @user, book: @book %>
+
+<table>
+     <thead>
+          <tr>
+             <th>     </th>
+             <th>Title</th>
+             <th>Opinion</th>
+          </tr>
+     </thead>
+
+     <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= attachment_image_tag book.user, :profile_image,:fill, 60, 60,fallback: "no_image.jpg" %></td>
+              <td><%= link_to book.title,book %></td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+     </tbody>
+</table>

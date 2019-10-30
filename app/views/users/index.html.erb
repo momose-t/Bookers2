@@ -1,0 +1,35 @@
+<p><%= flash[:notice] %></p>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- user info と　create book -->
+<%= render 'shared/list', user: @user, book: @book %>
+
+<!-- usernの一覧 -->
+<h4>User</h4>
+<table>
+     <thead>
+          <tr>
+             <th>Image</th>
+             <th>Name</th>
+          </tr>
+     </thead>
+
+     <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag @user, :profile_image,:fill, 60, 60,fallback: "no_image.jpg" %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to 'Show', user %></td>
+            </tr>
+          <% end %>
+     </tbody>
+</table>
